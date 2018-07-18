@@ -1,0 +1,2 @@
+class Nascore < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class NascoresController < ApplicationController
+end
