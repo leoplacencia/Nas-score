@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rut: MyString
+  fecha: 2018-07-18
+  puntaje: 9.99
+  turno: MyString
+
+two:
+  rut: MyString
+  fecha: 2018-07-18
+  puntaje: 9.99
+  turno: MyString
