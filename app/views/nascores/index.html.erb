@@ -1,7 +1,12 @@
-
 <div class="row">
-    <h1>Tabla Nas</h1>
-
+    
+    <div class="col-md-12 text-center"><h1>NAS (Nursing Activities Score)</h1></div>
+    
+    <hr>
+    <div>
+    <%= link_to "Agregar", new_nascore_path , class: "btn btn-primary"%>
+    </div>
+    <div class="separador"></div>
     <div class="col-md-12">
         <table class="table">
         <thead>
@@ -16,11 +21,13 @@
         <tbody>
             <% @nas.order(:cod).each do |n| %>
             <tr>
-            <th scope="row"><%= n.cod %></th>
-            <td><%= n.description %></td>
-            <td><%= n.score %></td>
-            <td><%= n.tipo %></td>
-            <td>editar eliminar</td>
+                <th scope="row"><%= n.cod %></th>
+                <td><%= n.description %></td>
+                <td><%= n.score %></td>
+                <td><%= n.tipo %></td>
+                <td><%=  link_to "Editar", edit_nascore_path(n), class: "btn btn-link" %>  
+                    <%= link_to "Eliminar",n, class: "btn btn-link text-danger", method: :delete, data: { confirm: "¿Estás seguro de eliminar este NAS?" } %>
+                </td>
             </tr>
             <% end %>
         </tbody>

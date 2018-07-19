@@ -55,7 +55,6 @@ class NascoresController < ApplicationController
     def destroy
     nas = Nascore.find(params[:id])
     nas.destroy
-    ​
     redirect_to :action => "index"
     end
     
