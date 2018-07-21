@@ -11,40 +11,24 @@ class RegistrosController < ApplicationController
         @nas = Nascore.all
     end
     def create
-        s
-        count = nas_params['cod']
-        if Nascore.where("cod = "+count ).length > 0
-            tipo = 'multiple'
-        else
-            tipo = 'simple'
-        end
-        @nas = Nascore.new(cod: nas_params['cod'],description: nas_params['description'],score: nas_params['score'],tipo: tipo)
         
-        if @nas.save
+        
+        @reg = Registro.new(reg_params)
+        
+        if @reg.save
             redirect_to :action => "index"
         else
             render :new
         end
     end
     def edit
-        @nas = Nascore.find(params[:id])
-        @nascores = Nascore.select(:cod).distinct
-        if Nascore.maximum('cod').nil?
-            @max = 1
-        else
-            @max = 1 + Nascore.maximum('cod')
-        end
+        @reg = Registro.find(params[:id])
+        
     end
     def update
-        @nas = Nascore.find(params[:id])
-        count = nas_params['cod']
-        if Nascore.where("cod = "+count+" and id !="+params[:id]  ).length > 0
-            tipo = 'multiple'
-        else 
-            tipo = 'simple'
-        end
-        if @nas.update(cod: nas_params['cod'],description: nas_params['description'],score: nas_params['score'],tipo: tipo)
-          redirect_to :action => "index"
+        @reg = Registro.find(params[:id])
+        if @reg.update(reg_params)
+          redirect_to :action => "admin"
         else
           render :edit
         end
@@ -52,12 +36,12 @@ class RegistrosController < ApplicationController
     def destroy
     registro = Registro.find(params[:id])
     registro.destroy
-    redirect_to :action => "index"
+    redirect_to :action => "admin"
     end
     
     private
     def reg_params
         
-        params.require(:nascore).permit(:cod, :description, :score, :tipo)
+        params.require(:registro).permit(:rut, :fecha, :puntaje, :turno)
     end
 end
