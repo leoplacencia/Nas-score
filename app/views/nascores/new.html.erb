@@ -16,7 +16,7 @@
         <label>Vincular</label>
         <select id="nascore_cod" name="nascore[cod]" class="custom-select">
             <option value="<%= @max %>" selected>No vinculado</option>
-            <% @nascores.each do |nas| %>
+            <% @nascores.order('cod').each do |nas| %>
                 <option value=<%= nas.cod %>><%= nas.cod%></option>
             <% end %>
         </select>

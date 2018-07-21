@@ -32,7 +32,7 @@ class NascoresController < ApplicationController
     end
     def edit
         @nas = Nascore.find(params[:id])
-        @nascores = Nascore.select(:cod).distinct.order('cod')
+        @nascores = Nascore.select(:cod).distinct
         if Nascore.maximum('cod').nil?
             @max = 1
         else
