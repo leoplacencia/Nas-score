@@ -25,8 +25,8 @@
                 <td><%= n.description %></td>
                 <td><%= n.score %></td>
                 <td><%= n.tipo %></td>
-                <td><%=  link_to "Editar", edit_nascore_path(n), class: "btn btn-link" %>  
-                    <%= link_to "Eliminar",n, class: "btn btn-link text-danger", method: :delete, data: { confirm: "¿Estás seguro de eliminar este NAS?" } %>
+                <td><%=  link_to "Editar", edit_nascore_path(n)%>  &nbsp;
+                    <%= link_to "Eliminar",n, class: "text-danger", method: :delete, data: { confirm: "¿Estás seguro de eliminar este NAS?" } %>
                 </td>
             </tr>
             <% end %>
