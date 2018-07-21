@@ -11,10 +11,16 @@ class RegistrosController < ApplicationController
         @nas = Nascore.all
     end
     def create
+        puntaje = 0.0
+        @nas = Nascore.all
+        @nas.each do |n|
+            if !params['check-'+n.id.to_s].nil?
+                puntaje = puntaje + params['check-'+n.id.to_s].to_f
+            end
+
+        end
         
-        
-        @reg = Registro.new(reg_params)
-        
+        @reg = Registro.new(rut: reg_params['rut'],fecha: reg_params['fecha'], puntaje:puntaje,turno: reg_params['turno'])
         if @reg.save
             redirect_to :action => "index"
         else
@@ -23,7 +29,6 @@ class RegistrosController < ApplicationController
     end
     def edit
         @reg = Registro.find(params[:id])
-        
     end
     def update
         @reg = Registro.find(params[:id])
@@ -41,7 +46,6 @@ class RegistrosController < ApplicationController
     
     private
     def reg_params
-        
         params.require(:registro).permit(:rut, :fecha, :puntaje, :turno)
     end
 end
