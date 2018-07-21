@@ -1,7 +1,3 @@
-<script>
-    var puntaje = 0.0 
-</script>
-
 <%= form_for @reg do |r| %>
 <div class="col-md-12 text-center">
     <h1>Registro NAS (Nursing Activities Score)</h1>
@@ -34,7 +30,7 @@
                                 </td>
                                 
                                 <td>
-                                    <input class="chk" type="checkbox" name="check-<%= n.id %>" value="<%= n.score %>">
+                                    <input class="chk-<%= n.cod%>" type="checkbox" name="check-<%= n.id %>" value="<%= n.score %>">
                                 </td>
                             </tr>
                             <% end %>
@@ -71,7 +67,7 @@
             </div>
             <div class="col-md-3">
                 <label id="registro_puntaje">Puntaje</label>
-                <input id="puntaje" name="registro[puntaje]" type="text" step="0.01" class="form-control" placeholder="Puntaje" disabled>
+                <input id="puntaje" name="registro[puntaje]" value="0" type="text" step="0.01" class="form-control" placeholder="Puntaje" disabled>
             </div>
         </div>
         <div class="form-group row">
@@ -89,16 +85,21 @@
     <% end %>
 
 
-    <script>
-        $('.chk').click(function(){
-            if($(this).prop('checked')==true){
-                let valor = parseFloat($(this).val())
-                puntaje = puntaje + valor
+<script>
+    <% @nas.select(:cod).distinct.each do |n| %>
+        $(".chk-<%= n.cod %>").change(function() {
+            var checked = $(this).is(':checked');
+            $(".chk-<%= n.cod %>").prop('checked',false);
+            if(checked) {
+                $(this).prop('checked',true);
             }
-            else{
-                let valor = parseFloat($(this).val())
-                puntaje = puntaje - valor
-            }
-            $('#puntaje').val(puntaje.toFixed(1))
-        })
-    </script>
+            sum = 0.0
+            $("input[type=checkbox]:checked").each(function(){
+                
+                sum += parseFloat($(this).val());
+            });
+            $('#puntaje').val(sum.toFixed(1))
+        });
+        
+    <% end %>
+</script>
