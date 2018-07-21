@@ -1,0 +1,37 @@
+<div class="row">
+    
+    <div class="col-md-12 text-center"><h1>Registros NAS (Nursing Activities Score)</h1></div>
+    
+    <hr>
+    <div>
+    <%#  link_to "Agregar", new_nascore_path , class: "btn btn-primary"%>
+    </div>
+    <div class="separador"></div>
+    <div class="col-md-12">
+        <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">RUT</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Puntaje</th>
+                <th scope="col">Turno</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @reg.each do |r| %>
+            <tr>
+                <th scope="row"><%= n.cod %></th>
+                <td><%= r.rut %></td>
+                <td><%= r.fecha %></td>
+                <td><%= r.puntaje %></td>
+                <td><%= r.turno %></td>
+                <td><%#=  link_to "Editar", edit_nascore_path(n), class: "btn btn-link" %>  
+                    <%#= link_to "Eliminar",n, class: "btn btn-link text-danger", method: :delete, data: { confirm: "¿Estás seguro de eliminar este NAS?" } %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,84 @@
+<%= form_for @reg do |r| %>
+<div class="col-md-12 text-center">
+    <h1>Registro NAS (Nursing Activities Score)</h1>
+</div>
+    <div class="col-md-12">
+        <div class="row">
+            <hr>
+            
+            <div class="col-md">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">cod</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Valor</th>
+                            <th scope="col">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @nas.order(:cod).each do |n| %>
+                            <tr>
+                                <th scope="row">
+                                    <%= n.cod %>
+                                </th>
+                                <td>
+                                    <%= n.description %>
+                                </td>
+                                <td>
+                                    <%= n.score %>
+                                </td>
+                                
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                            <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="separador"></div>
+    <div class="col-md-12">
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label id="registro_rut">Rut</label>
+                <input id="registro_rut" name="registro[rut]" type="text" class="form-control" placeholder="Rut">
+            </div>
+
+
+
+        
+            <div class="col-md-3">
+                <label id="registro_fecha">Fecha</label>
+                <input id="registro_fecha" name="registro[fecha]" type="text" class="form-control" placeholder="Fecha">
+            </div>
+        
+            <div class="col-md-3">
+                <label id="registro_puntaje">Puntaje</label>
+                <input id="registro_puntaje" name="registro[puntaje]" type="number" step="0.01" class="form-control" placeholder="Puntaje">
+            </div>
+        
+            <div class="col-md-3">
+                <label>Turno</label>
+                <select id="registro_turno" name="registro[turno]" class="custom-select">
+                    <option value="Largo" selected>Largo</option>
+                    <option value="Noche" selected>Noche</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-6">
+                <button type="submit" class="btn btn-primary">Agregar</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <% end %>
