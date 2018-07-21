@@ -10,16 +10,16 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">cod</th>
+                            <th scope="col">COD</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Valor</th>
-                            <th scope="col">Opciones</th>
+                            <th scope="col" class="text-center">Opciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <% @nas.order(:cod).each do |n| %>
-                            <tr id = <%= n.id %>>
-                                <th scope="row">
+                            <tr>
+                                <th>
                                     <%= n.cod %>
                                 </th>
                                 <td>
@@ -29,7 +29,7 @@
                                     <%= n.score %>
                                 </td>
                                 
-                                <td>
+                                <td class="text-center">
                                     <input class="chk-<%= n.cod%>" type="checkbox" name="check-<%= n.id %>" value="<%= n.score %>">
                                 </td>
                             </tr>
@@ -44,7 +44,7 @@
         <div class="form-group row">
             <div class="col-md-3">
                 <label id="registro_rut">Rut</label>
-                <input id="registro_rut" name="registro[rut]" type="text" class="form-control" placeholder="Rut">
+                <input id="registro_rut" name="registro[rut]" type="text" class="form-control" placeholder="Rut" required>
             </div>
 
 
@@ -52,14 +52,14 @@
         
             <div class="col-md-3">
                 <label id="registro_fecha">Fecha</label>
-                <input id="registro_fecha" name="registro[fecha]" type="date" class="form-control" placeholder="Fecha">
+                <input id="registro_fecha" name="registro[fecha]" type="date" class="form-control" placeholder="Fecha" required>
             </div>
         
             
         
             <div class="col-md-3">
                 <label>Turno</label>
-                <select id="registro_turno" name="registro[turno]" class="custom-select">
+                <select id="registro_turno" name="registro[turno]" class="custom-select" required>
                     <option value="Largo" selected>Largo</option>
                     <option value="Noche" >Noche</option>
 

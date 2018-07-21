@@ -1,0 +1,22 @@
+<div class="text-center">
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name),:html => {class: 'form-signin' } )  do |f| %>
+      <%# <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72"> %>
+      <h1 class="h3 mb-3 font-weight-normal">Iniciar Sesión</h1>
+      <label for="admin_email" class="sr-only">Email</label>
+      <input autofocus="autofocus" name="admin[email]" id="admin_email" class="form-control" placeholder="Email" required="required" type="email">
+      <label for="admin_email" class="sr-only">Contraseña</label>
+      <input id="admin_password" class="form-control" name="admin[password]"  placeholder="Contraseña" required="" type="password">
+
+      <div class="checkbox mb-3">
+        <label for="admin_remember_me">
+          <input name="admin[remember_me]" value="0" type="hidden">
+          <input value="remember-me" type="checkbox" value="1" name="admin[remember_me]" id="admin_remember_me"> Recordar
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>
+      <p class="mt-5 mb-3 text-muted">© 2018</p>
+     <% end %>
+  
+
+</div>
+

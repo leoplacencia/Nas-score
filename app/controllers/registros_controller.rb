@@ -1,4 +1,5 @@
 class RegistrosController < ApplicationController
+    before_action :authenticate_admin!, except: [:index, :new,:create]
     # Formulario para crear un registro
     def index
         @reg = Registro.all

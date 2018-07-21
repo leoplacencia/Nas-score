@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   # Limitar uso de resources show
   resources :registros
   resources :nascores, except: [:show]
